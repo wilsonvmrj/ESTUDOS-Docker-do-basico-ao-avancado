@@ -5,7 +5,7 @@ LABEL maintainer="mateus"
 HEALTHCHECK CMD \
     curl -sf http://localhost:3000 || exit 1 
 
-RUN mkdir /var/node \
+RUN adduser -h  /var/node \    
     -s /bin/bash \
     -D nodeapp && \
     apk add curl
