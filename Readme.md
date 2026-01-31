@@ -131,3 +131,11 @@ docker run -it -w /app  -v /tmp/target:/app alpine sh
 # Primeiro dockerfile
 
 Criado o docker file
+
+## Build de arquivo diferente do dockerfile padrao.
+
+exemplo :
+
+```
+docker build -t python-healthcheck -f Dockerfile.python .
+```
