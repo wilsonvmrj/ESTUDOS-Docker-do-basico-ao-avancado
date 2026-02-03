@@ -139,3 +139,37 @@ exemplo :
 ```
 docker build -t python-healthcheck -f Dockerfile.python .
 ```
+
+# Trabalhando com semantic version no git e no docker :
+
+![alt text](image-5.png)
+![alt text](image-4.png)
+
+Resumindo utilizar o no nome da imagem o hash do commit para ter referência
+da imagem docker.
+
+# Restart policies
+
+### Tipos de Policies
+
+- no: Não reiniciar automaticamente o contêiner.
+  Este é o padrão.
+
+- always: Sempre reiniciar o contêiner, independentemente do código de saída. Útil para serviços que precisam estar sempre ativos.
+
+- on-failure: Reiniciar apenas se o contêiner falhar, ou seja, sair com um código de erro diferente de zero (\(exit\ne 0\)). Também aceita um limite opcional de tentativas,
+  ex: --restart=on-failure:5.
+
+- unless-stopped: Reiniciar o contêiner sempre, a menos que ele tenha sido parado manualmente (pelo usuário ou pelo Docker daemon
+
+Para alterar as policies de um container :
+
+Para zerar as policies
+
+```
+docker update --restart no hashcontainer
+```
+
+```
+docker update --restart on-falure
+```
