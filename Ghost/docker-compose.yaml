@@ -1,0 +1,44 @@
+services:
+  ghost:
+    build: .
+    ports:
+      - 8080:2368
+    environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: 66d06aa88e2b6fa94676ffb0be3e5d2c
+      database__connection__database: ghost
+    entrypoint:
+      [
+        "wait-for-it.sh",
+        "db:3306",
+        "--timeout=300",
+        "--",
+        "docker-entrypoint.sh",
+      ]
+    command: ["node", "current/index.js"]
+    volumes:
+      - ghost:/var/lib/ghost/content
+    networks:
+      - public
+      - private
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 66d06aa88e2b6fa94676ffb0be3e5d2c
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - private
+
+volumes:
+  ghost:
+  db:
+networks:
+  public:
+  private:

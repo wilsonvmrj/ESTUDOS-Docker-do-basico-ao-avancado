@@ -173,3 +173,35 @@ docker update --restart no hashcontainer
 ```
 docker update --restart on-falure
 ```
+
+# Docker Swarm
+
+## Pontos importantes seguindo boas práticas :
+
+- Ter no mínimo 3 manager
+
+## Projeto vip vs dnsrr
+
+Cria uma rede para projeto
+
+```
+docker network create -d overlay --atachable comunidade-devops
+```
+
+Inciando o serviço
+
+```
+ docker service create --name nginx-service --replicas 3 --endpoint-mode vip --network comunidade-devops nginx:latest
+```
+
+Inspecionando as rede
+
+```
+docker run --network comunidade-devops -it nicolaka/netshoot sh
+```
+
+Escalando o servico:
+
+```
+ docker service scale nginx-service=10
+```

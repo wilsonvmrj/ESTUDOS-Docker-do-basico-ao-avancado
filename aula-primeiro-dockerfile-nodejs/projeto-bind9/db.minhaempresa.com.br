@@ -1,0 +1,17 @@
+$TTL 604800
+@   IN  SOA ns1.minhaempresa.com.br. root.minhaempresa.com.br. (
+            3       ;serial
+        60480       ;Refresh
+        86400       ;Retry
+        2419200     ;Expire
+        604800)     ; Negative cache TTL
+
+;
+; name server - NS Records
+
+IN NS   ns1.minhaempresa.com.br.    IN  A 172.20.0.2
+
+portal.minhaempresa.com.br.         IN  A 172.89.0.21
+portal.minhaempresa.com.br.         IN  A 172.89.0.22
+portal.minhaempresa.com.br.         IN  A 172.89.0.23
+
